@@ -15,7 +15,9 @@ public class Enemy : MonoBehaviour
     private Transform player;
     private Rigidbody2D rbdy;
     private SpriteRenderer spriteRenderer;
+    private SkeletonManager skeletonManager;
     public bool skelefied = false;
+    private Vector2 mousePos;
 
     void Start()
     {
@@ -25,6 +27,7 @@ public class Enemy : MonoBehaviour
         {
             player = GameObject.FindWithTag("Player").GetComponent<Transform>();
         }
+        skeletonManager = SkeletonManager.instance;
     }
 
     void Update()
@@ -60,6 +63,27 @@ public class Enemy : MonoBehaviour
             }
         }
 
+        if (!isAlive && !skelefied)
+        {
+            mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            float distanceToMouse = Vector2.Distance(transform.position, mousePos);
+
+            if (distanceToMouse < skeletonManager.spawnRadius && !skelefied)
+            {
+                spriteRenderer.color = Color.white;
+                if (Input.GetMouseButtonDown(1))
+                {
+                    skelefied = true;
+                    Debug.Log("Enemy has been skelefied!");
+                    skeletonManager.SpawnSkeleton(skeletonManager.basicSkeleton, transform.position);
+                    Destroy(gameObject);
+                }
+            }
+            else
+            {
+                spriteRenderer.color = Color.purple;
+            }
+        }
     }
 
     public void takeDamage(float amount)
@@ -74,7 +98,6 @@ public class Enemy : MonoBehaviour
         // Death Sound
         rbdy.linearVelocity = Vector2.zero;
         isAlive = false;
-        spriteRenderer.color = Color.purple;
         // Destroy(gameObject);
     }
 
