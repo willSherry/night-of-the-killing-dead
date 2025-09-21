@@ -72,9 +72,10 @@ public class Enemy : MonoBehaviour
     {
         // Death Animation
         // Death Sound
+        rbdy.linearVelocity = Vector2.zero;
         isAlive = false;
         spriteRenderer.color = Color.purple;
-        Destroy(gameObject);
+        // Destroy(gameObject);
     }
 
     public void damagePlayer(float amount)

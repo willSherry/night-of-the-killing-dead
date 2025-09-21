@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -6,10 +7,14 @@ public class PlayerMovement : MonoBehaviour
 
     private Rigidbody2D rb;
     private Vector2 inputVector;
+    private Vector2 mousePos;
+    private Vector2 objectPos;
+    private SpriteRenderer spriteRenderer;
 
     void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
+        spriteRenderer = GetComponent<SpriteRenderer>();
         rb.linearDamping = 0f;
         // If gravity isn’t wanted:
         rb.gravityScale = 0f;
@@ -24,5 +29,17 @@ public class PlayerMovement : MonoBehaviour
         inputVector = Vector2.ClampMagnitude(inputVector, 1f);
 
         rb.linearVelocity = inputVector * movementSpeed;
+
+        mousePos = Input.mousePosition;
+        objectPos = Camera.main.WorldToScreenPoint(transform.position);
+        if (mousePos.x < objectPos.x)
+        {
+            spriteRenderer.flipX = false;
+        }
+        else
+        {
+            spriteRenderer.flipX = true;
+        }
     }
+
 }
