@@ -18,7 +18,9 @@ public class SkeletonManager : MonoBehaviour
     }
 
     public GameObject basicSkeleton;
-    public float spawnRadius = 1f;
+    public float spawnRadius = 2.5f;
+
+    public float skeletonDistance = 5f;
 
     public void SpawnSkeleton(GameObject skeleton, Vector3 position)
     {

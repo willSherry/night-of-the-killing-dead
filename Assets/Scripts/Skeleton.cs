@@ -6,7 +6,7 @@ public class Skeleton : MonoBehaviour
 
     public float health = 50f;
     public float speed = 3f;
-    public float followCutoff = 1f;
+    public float followCutoff;
     public float attackRange = 0.5f;
     public float attackRate = 1f;
     public float damage = 5f;
@@ -19,6 +19,7 @@ public class Skeleton : MonoBehaviour
     {
         player = GameObject.FindWithTag("Player").GetComponent<Transform>();
         rbdy = GetComponent<Rigidbody2D>();
+        followCutoff = Random.Range(1f, 4f);
     }
 
     void Update()
@@ -46,4 +47,18 @@ public class Skeleton : MonoBehaviour
             GetComponent<SpriteRenderer>().flipX = true;
         }
     }
+
+    void FixedUpdate()
+    {
+        Collider2D[] nearbySkeletons = Physics2D.OverlapCircleAll(transform.position, 0.5f);
+        foreach (Collider2D col in nearbySkeletons)
+        {
+            if (col.gameObject != gameObject && col.CompareTag("Skeleton"))
+            {
+                Vector2 away = (transform.position - col.transform.position).normalized;
+                rbdy.AddForce(away * 0.5f); // tweak force strength
+            }
+        }
+    }
+
 }
