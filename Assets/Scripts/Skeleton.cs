@@ -19,6 +19,7 @@ public class Skeleton : MonoBehaviour
     void Start()
     {
         player = GameObject.FindWithTag("Player").GetComponent<Transform>();
+        speed = player.GetComponent<PlayerMovement>().movementSpeed;
         rbdy = GetComponent<Rigidbody2D>();
         followCutoff = Random.Range(1f, 7f);
         skeletonManager = SkeletonManager.instance;
@@ -26,21 +27,9 @@ public class Skeleton : MonoBehaviour
 
     void Update()
     {
-        if (player != null && isAlive && followPlayer)
+        if (health <= 0 && isAlive)
         {
-            PlayerMovement playerMovement = GameObject.FindWithTag("Player").GetComponent<PlayerMovement>();
-            speed = playerMovement.movementSpeed;
-
-            float distanceToPlayer = Vector2.Distance(transform.position, player.position);
-            if (distanceToPlayer >= followCutoff)
-            {
-                Vector2 direction = (player.position - transform.position).normalized;
-                rbdy.linearVelocity = direction * speed;
-            }
-            else
-            {
-                rbdy.linearVelocity = Vector2.zero;
-            }
+            Die();
         }
 
         if (rbdy.linearVelocity.x < 0)
@@ -55,6 +44,10 @@ public class Skeleton : MonoBehaviour
 
     void FixedUpdate()
     {
+        bool enemyNearby = false;
+        Collider2D closestEnemy = null;
+        float closestEnemyDistance = float.MaxValue;
+
         Collider2D[] nearbySkeletons = Physics2D.OverlapCircleAll(transform.position, 0.5f);
         foreach (Collider2D col in nearbySkeletons)
         {
@@ -68,29 +61,49 @@ public class Skeleton : MonoBehaviour
         Collider2D[] nearbyEnemies = Physics2D.OverlapCircleAll(transform.position, skeletonManager.enemyDetectionRadius);
         foreach (Collider2D col in nearbyEnemies)
         {
-            if (col.gameObject != gameObject && col.CompareTag("Enemy"))
+            if (col.gameObject != gameObject && col.CompareTag("Enemy") && col.GetComponent<Enemy>().isAlive)
             {
-                Vector2 towardsEnemy = (transform.position - col.transform.position).normalized;
-                rbdy.AddForce(towardsEnemy * 0.5f);
+                float dist = Vector2.Distance(transform.position, col.transform.position);
+                if (dist < closestEnemyDistance)
+                {
+                    closestEnemyDistance = dist;
+                    closestEnemy = col;
+                }
             }
 
-            if (col.gameObject != gameObject && col.CompareTag("Enemy") && Vector2.Distance(transform.position, col.transform.position) <= skeletonManager.skeletonDistance)
+            if (closestEnemy != null)
             {
-                followPlayer = false;
-                if (Vector2.Distance(transform.position, col.transform.position) <= attackRange)
+                enemyNearby = true;
+                if (closestEnemyDistance > attackRange)
+                {
+                    Vector2 direction = (closestEnemy.transform.position - transform.position).normalized;
+                    rbdy.linearVelocity = direction * speed;
+                }
+                else
                 {
                     rbdy.linearVelocity = Vector2.zero;
                     if (Time.time >= attackRate)
                     {
                         Attack();
-                        col.GetComponent<Enemy>().takeDamage(damage);
                         attackRate = Time.time + 1f;
+                        closestEnemy.GetComponent<Enemy>().takeDamage(damage);
                     }
                 }
             }
-            else
+
+            if (!enemyNearby && player != null && isAlive)
             {
-                followPlayer = true;
+                float distanceToPlayer = Vector2.Distance(transform.position, player.position);
+                if (distanceToPlayer >= followCutoff)
+                {
+                    Vector2 direction = (player.position - transform.position).normalized;
+                    rbdy.linearVelocity = direction * speed;
+                }
+                else
+                {
+                    rbdy.linearVelocity = Vector2.zero;
+                    // future idle roaming behavior can be added here
+                }
             }
         }
     }
@@ -98,6 +111,14 @@ public class Skeleton : MonoBehaviour
     void Attack()
     {
         Debug.Log("Skeleton attacks for " + damage + " damage.");
+    }
+    
+    void Die()
+    {
+        isAlive = false;
+        Debug.Log("Skeleton has died.");
+        // Add death handling logic here (e.g., drop loot, play animation)
+        Destroy(gameObject);
     }
 
 }

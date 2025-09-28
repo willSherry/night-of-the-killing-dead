@@ -5,7 +5,7 @@ using UnityEngine;
 public class Enemy : MonoBehaviour
 {
 
-    bool isAlive = true;
+    public bool isAlive = true;
     public float health = 100f;
     public float speed = 2f;
     public float followRange = 10f;
@@ -73,6 +73,7 @@ public class Enemy : MonoBehaviour
                 spriteRenderer.color = Color.white;
                 if (Input.GetMouseButtonDown(1))
                 {
+                    SoundManager.PlaySound(SoundType.Skelefy);
                     skelefied = true;
                     Debug.Log("Enemy has been skelefied!");
                     skeletonManager.SpawnSkeleton(skeletonManager.basicSkeleton, transform.position);

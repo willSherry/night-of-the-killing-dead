@@ -29,6 +29,7 @@ public class PlayerFiring : MonoBehaviour
             float angle = Mathf.Atan2(mousePos.y - objectPos.y, mousePos.x - objectPos.x) * Mathf.Rad2Deg - 90;
 
             Instantiate(projectile, transform.position, Quaternion.Euler(0, 0, angle));
+            SoundManager.PlaySound(SoundType.PlayerShoot);
         }
 
     }
