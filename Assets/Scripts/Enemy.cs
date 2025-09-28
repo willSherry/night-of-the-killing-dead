@@ -65,7 +65,8 @@ public class Enemy : MonoBehaviour
 
         if (!isAlive && !skelefied)
         {
-            mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            float zDistance = Mathf.Abs(Camera.main.transform.position.z - transform.position.z);
+            mousePos = Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, zDistance));
             float distanceToMouse = Vector2.Distance(transform.position, mousePos);
 
             if (distanceToMouse < skeletonManager.spawnRadius && !skelefied)

@@ -23,6 +23,8 @@ public class Skeleton : MonoBehaviour
         rbdy = GetComponent<Rigidbody2D>();
         followCutoff = Random.Range(1f, 7f);
         skeletonManager = SkeletonManager.instance;
+
+        skeletonManager.numberOfSkeletons += 1;
     }
 
     void Update()
@@ -116,6 +118,7 @@ public class Skeleton : MonoBehaviour
     void Die()
     {
         isAlive = false;
+        skeletonManager.numberOfSkeletons -= 1;
         Debug.Log("Skeleton has died.");
         // Add death handling logic here (e.g., drop loot, play animation)
         Destroy(gameObject);

@@ -15,6 +15,8 @@ public class SkeletonManager : MonoBehaviour
         {
             Destroy(gameObject);
         }
+
+        numberOfSkeletons = 0;
     }
 
     public GameObject basicSkeleton;
@@ -22,6 +24,7 @@ public class SkeletonManager : MonoBehaviour
 
     public float skeletonDistance = 5f;
     public float enemyDetectionRadius = 10f;
+    public int numberOfSkeletons;
 
     public void SpawnSkeleton(GameObject skeleton, Vector3 position)
     {
