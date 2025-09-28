@@ -9,6 +9,7 @@ public class PlayerLife : MonoBehaviour
         if (health <= 0)
         {
             Die();
+            health = 0;
         }
     }
 
