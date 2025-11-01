@@ -133,7 +133,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: '::'
   isAlive: 1
-  health: 1
+  health: 100
   speed: 2
   followRange: 10
   attackRange: 0.5
