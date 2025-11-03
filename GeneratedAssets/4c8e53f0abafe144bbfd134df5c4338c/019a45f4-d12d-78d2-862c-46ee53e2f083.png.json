@@ -1,0 +1,20 @@
+{
+    "asset": "4c8e53f0abafe144bbfd134df5c4338c",
+    "fileName": "019a45f4-d12d-78d2-862c-46ee53e2f083.png",
+    "prompt": "create an isometric tile map, dark fantasy, black and grey, no gradient, no pixel art",
+    "negativePrompt": "",
+    "model": "5b5b2af1-6ea4-4266-b087-cc9f3bf4f450",
+    "modelName": "Flux.1 Dev",
+    "customSeed": -1,
+    "w3CTraceId": "832af18fe9aa0e20bac145c6c2e575f9",
+    "refinementMode": "Generation",
+    "pixelateTargetSize": 0,
+    "pixelateKeepImageSize": false,
+    "pixelatePixelBlockSize": 0,
+    "pixelateMode": 0,
+    "pixelateOutlineThickness": 0,
+    "doodles": {
+        "m_Items": []
+    },
+    "upscaleFactor": 0
+}

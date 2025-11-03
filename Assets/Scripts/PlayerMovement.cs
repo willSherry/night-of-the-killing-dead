@@ -34,11 +34,11 @@ public class PlayerMovement : MonoBehaviour
         objectPos = Camera.main.WorldToScreenPoint(transform.position);
         if (mousePos.x < objectPos.x)
         {
-            spriteRenderer.flipX = false;
+            spriteRenderer.flipX = true;
         }
         else
         {
-            spriteRenderer.flipX = true;
+            spriteRenderer.flipX = false;
         }
     }
 
