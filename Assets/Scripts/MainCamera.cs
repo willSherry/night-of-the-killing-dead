@@ -13,7 +13,7 @@ public class MainCamera : MonoBehaviour
     {
         mainCamera = Camera.main;
         skeletonManager = SkeletonManager.instance;
-        fieldOfView = 50f;
+        fieldOfView = 80f;
         previousSkeletonCount = skeletonManager.numberOfSkeletons;
     }
 
@@ -26,13 +26,9 @@ public class MainCamera : MonoBehaviour
             fieldOfView += 0.25f * (numberOfSkeletons - previousSkeletonCount);
         }
 
-        if (fieldOfView > 80f)
+        if (fieldOfView < 80f)
         {
             fieldOfView = 80f;
-        }
-        else if (fieldOfView < 50f)
-        {
-            fieldOfView = 50f;
         }
 
         mainCamera.fieldOfView = fieldOfView;
