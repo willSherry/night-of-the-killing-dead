@@ -33,10 +33,10 @@ public class Projectile : MonoBehaviour
     {
         Debug.Log("Projectile hit: " + collision.gameObject.name);
 
-        Enemy enemy = collision.gameObject.GetComponent<Enemy>();
+        EnemyController enemy = collision.gameObject.GetComponent<EnemyController>();
         if (enemy != null)
         {
-            enemy.takeDamage(25f);
+            enemy.TakeDamage(25f);
         }
         Destroy(gameObject);
     }

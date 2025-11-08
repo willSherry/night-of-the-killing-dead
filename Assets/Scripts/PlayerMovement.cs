@@ -5,7 +5,6 @@ public class PlayerMovement : MonoBehaviour
 {
     public float movementSpeed = 5f;
 
-    private Rigidbody2D rb;
     private Vector2 inputVector;
     private Vector2 mousePos;
     private Vector2 objectPos;
@@ -13,22 +12,17 @@ public class PlayerMovement : MonoBehaviour
 
     void Awake()
     {
-        rb = GetComponent<Rigidbody2D>();
         spriteRenderer = GetComponent<SpriteRenderer>();
-        rb.linearDamping = 0f;
-        // If gravity isn’t wanted:
-        rb.gravityScale = 0f;
     }
 
     void FixedUpdate()
     {
-        float horizontalInput = Input.GetAxisRaw("Horizontal");
-        float verticalInput = Input.GetAxisRaw("Vertical");
+        Vector3 moveInput = new Vector3(0f, 0f, 0f);
 
-        inputVector = new Vector2(horizontalInput, verticalInput);
-        inputVector = Vector2.ClampMagnitude(inputVector, 1f);
+        moveInput.x = Input.GetAxisRaw("Horizontal");
+        moveInput.y = Input.GetAxisRaw("Vertical");
 
-        rb.linearVelocity = inputVector * movementSpeed;
+        transform.position += moveInput.normalized * movementSpeed * Time.fixedDeltaTime;
 
         mousePos = Input.mousePosition;
         objectPos = Camera.main.WorldToScreenPoint(transform.position);
