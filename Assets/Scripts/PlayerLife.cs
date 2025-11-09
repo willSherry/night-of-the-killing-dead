@@ -13,7 +13,7 @@ public class PlayerLife : MonoBehaviour
         }
     }
 
-    public void damange(float amount)
+    public void damage(float amount)
     {
         health -= amount;
         Debug.Log("Player took damage: " + amount + ", Current health: " + health);

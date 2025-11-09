@@ -9,13 +9,18 @@ public class EnemyController : MonoBehaviour
     public Transform target;
 
     public float health = 100f;
+    XPManager xpManager;
+    PlayerLife playerLife;
 
     void Start()
     {
         // ensure references
         if (rb == null) rb = GetComponent<Rigidbody2D>();
-        GameObject playerObj = GameObject.FindGameObjectWithTag("Player");
-        if (playerObj != null) target = playerObj.transform;
+        GameObject player = GameObject.FindGameObjectWithTag("Player");
+        if (player != null) target = player.transform;
+
+        xpManager = FindFirstObjectByType<XPManager>();
+        playerLife = player.GetComponent<PlayerLife>();
     }
 
     void FixedUpdate()
@@ -23,6 +28,14 @@ public class EnemyController : MonoBehaviour
         if (rb == null || target == null) return;
         Vector2 direction = ((Vector2)target.position - (Vector2)transform.position).normalized;
         rb.linearVelocity = direction * movementSpeed;
+    }
+
+    void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("Player"))
+        {
+            playerLife.damage(5f);
+        }
     }
 
     public void TakeDamage(float damage)
@@ -37,6 +50,7 @@ public class EnemyController : MonoBehaviour
     void Die()
     {
         Debug.Log("Enemy died");
-        Destroy(gameObject);
+        xpManager.AddXP(1);
+        Destroy(this.gameObject);
     }
 }
