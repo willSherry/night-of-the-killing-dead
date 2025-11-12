@@ -25,13 +25,11 @@ public class Projectile : MonoBehaviour
     void DestroyProjectile()
     {
         spriteRenderer.enabled = false;
-        Debug.Log("Projectile destroyed");
         Destroy(this.gameObject);
     }
 
     void OnCollisionEnter2D(Collision2D collision)
     {
-        Debug.Log("Projectile hit: " + collision.gameObject.name);
 
         EnemyController enemy = collision.gameObject.GetComponent<EnemyController>();
         if (enemy != null)
