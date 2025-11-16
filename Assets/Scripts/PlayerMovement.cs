@@ -9,10 +9,14 @@ public class PlayerMovement : MonoBehaviour
     private Vector2 mousePos;
     private Vector2 objectPos;
     private SpriteRenderer spriteRenderer;
+    private Animator animator;
+    private bool isMoving;
 
     void Awake()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
+        animator = GetComponent<Animator>();
+        isMoving = false;
     }
 
     void FixedUpdate()
@@ -23,6 +27,14 @@ public class PlayerMovement : MonoBehaviour
         moveInput.y = Input.GetAxisRaw("Vertical");
 
         transform.position += moveInput.normalized * movementSpeed * Time.fixedDeltaTime;
+        isMoving = moveInput != Vector3.zero;
+
+        animator.SetBool("isRunning", isMoving);
+
+        if (isMoving)
+        {
+            // play running animation
+        }
 
         mousePos = Input.mousePosition;
         objectPos = Camera.main.WorldToScreenPoint(transform.position);

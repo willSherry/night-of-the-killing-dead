@@ -8,6 +8,7 @@ TagManager:
   - PlayerProjectile
   - Skeleton Manager
   - Skeleton
+  - PlayerModel
   layers:
   - Default
   - TransparentFX
