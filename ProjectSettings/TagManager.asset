@@ -9,6 +9,7 @@ TagManager:
   - Skeleton Manager
   - Skeleton
   - PlayerModel
+  - MouseVFX
   layers:
   - Default
   - TransparentFX

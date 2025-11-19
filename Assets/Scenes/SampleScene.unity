@@ -140542,6 +140542,7 @@ GameObject:
   - component: {fileID: 430706818}
   - component: {fileID: 430706819}
   - component: {fileID: 430706820}
+  - component: {fileID: 430706821}
   m_Layer: 8
   m_Name: Player
   m_TagString: Player
@@ -140735,6 +140736,19 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &430706821
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 430706812}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a062c6938b795ac44b900b29d8ba5c28, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Summoning
+  resurrectAnimation: {fileID: 1777479064}
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -141876,6 +141890,67 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1001 &1495023672
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1232338548219497946, guid: b24854351aeabef4cb35060f64e44b76, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -2.9971173
+      objectReference: {fileID: 0}
+    - target: {fileID: 1232338548219497946, guid: b24854351aeabef4cb35060f64e44b76, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 2.1618707
+      objectReference: {fileID: 0}
+    - target: {fileID: 1232338548219497946, guid: b24854351aeabef4cb35060f64e44b76, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 3.571474
+      objectReference: {fileID: 0}
+    - target: {fileID: 1232338548219497946, guid: b24854351aeabef4cb35060f64e44b76, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1232338548219497946, guid: b24854351aeabef4cb35060f64e44b76, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1232338548219497946, guid: b24854351aeabef4cb35060f64e44b76, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1232338548219497946, guid: b24854351aeabef4cb35060f64e44b76, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1232338548219497946, guid: b24854351aeabef4cb35060f64e44b76, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1232338548219497946, guid: b24854351aeabef4cb35060f64e44b76, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1232338548219497946, guid: b24854351aeabef4cb35060f64e44b76, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5870945536939947268, guid: b24854351aeabef4cb35060f64e44b76, type: 3}
+      propertyPath: m_Name
+      value: ResurrectAura
+      objectReference: {fileID: 0}
+    - target: {fileID: 5870945536939947268, guid: b24854351aeabef4cb35060f64e44b76, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: b24854351aeabef4cb35060f64e44b76, type: 3}
 --- !u!1 &1658842988
 GameObject:
   m_ObjectHideFlags: 0
@@ -142122,6 +142197,11 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!1 &1777479064 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5870945536939947268, guid: b24854351aeabef4cb35060f64e44b76, type: 3}
+  m_PrefabInstance: {fileID: 1495023672}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1860362341
 GameObject:
   m_ObjectHideFlags: 0
@@ -142140,7 +142220,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1860362342
 RectTransform:
   m_ObjectHideFlags: 0
@@ -142599,3 +142679,4 @@ SceneRoots:
   - {fileID: 312001478}
   - {fileID: 226471325}
   - {fileID: 271956762}
+  - {fileID: 1495023672}
