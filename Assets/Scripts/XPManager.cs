@@ -1,6 +1,7 @@
 using UnityEngine;
 using System;
 using JetBrains.Annotations;
+using UnityEngine.UI;
 
 public class XPManager : MonoBehaviour
 {
@@ -9,11 +10,18 @@ public class XPManager : MonoBehaviour
     public int XPToNextLevel;
     public int XPMultiplier = 1;
     public LevelUpUI levelUpScreen;
+    [SerializeField] Slider xpSlider;
     void Start()
     {
         CurrentLevel = 1;
         CurrentXP = 0;
         XPToNextLevel = 10;
+    }
+
+    public void UpdateExperienceSlider()
+    {
+        xpSlider.maxValue = XPToNextLevel;
+        xpSlider.value = CurrentXP;
     }
 
     void LevelUp()
@@ -30,6 +38,7 @@ public class XPManager : MonoBehaviour
         Debug.Log("Gained " + (amount * XPMultiplier) + " XP");
         Debug.Log($"Current XP: {CurrentXP} / {XPToNextLevel}");
         CurrentXP += (amount * XPMultiplier);
+        UpdateExperienceSlider();
         if (CurrentXP >= XPToNextLevel)
         {
             LevelUp();

@@ -4,20 +4,26 @@ using UnityEngine.UI;
 using TMPro;
 
 public class LevelUpUI : MonoBehaviour
-{
+{   
+    [SerializeField] GameObject levelUpPanel;
     void Start()
     {
-        gameObject.SetActive(false);
+        levelUpPanel.SetActive(false);
     }
 
     public void ShowLevelUpPanel()
     {
         Time.timeScale = 0f;
-        gameObject.SetActive(true);
+        levelUpPanel.SetActive(true);
     }
 
     public void HideLevelUpPanel()
     {
-        gameObject.SetActive(false);
+        levelUpPanel.SetActive(false);
+    }
+
+    void addMoreSkeletons()
+    {
+        
     }
 }
