@@ -9,13 +9,14 @@ public class XPManager : MonoBehaviour
     public int CurrentXP;
     public int XPToNextLevel;
     public int XPMultiplier = 1;
-    public LevelUpUI levelUpScreen;
+    private LevelUpUI levelUpScreen;
     [SerializeField] Slider xpSlider;
     void Start()
     {
         CurrentLevel = 1;
         CurrentXP = 0;
         XPToNextLevel = 10;
+        levelUpScreen = GetComponent<LevelUpUI>();
     }
 
     public void UpdateExperienceSlider()
