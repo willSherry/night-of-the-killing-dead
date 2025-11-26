@@ -22,6 +22,9 @@ Each run begins small and slow — but may end with an overwhelming undead swarm
 
 ## 2. Core Pillars
 
+![Alt text](ReadMeImages/skeleton.png)
+
+
 | Pillar | Description |
 |-------|-------------|
 | **Necromantic Power Fantasy** | Player growth is measured in skeletons, skeleton spells, and combat scale. |
@@ -91,7 +94,7 @@ Endgame builds depend heavily on how the player balances swarm size vs special u
 All art is **hand-drawn in ProCreate** and imported into Unity.  
 The visual identity is inspired by classic **80’s gothic horror**.
 
-![Alt text](ReadMeImages/skeleton.png)
+![Alt text](ReadMeImages/skeleton1.png)
 ![Alt text](ReadMeImages/skeleton2.png)
 ![Alt text](ReadMeImages/skeleton3.png)
 
