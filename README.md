@@ -1,9 +1,9 @@
 # **Night of the Killing Dead – Game Design Document**
 
-![Alt text](ReadMeImages/mainskeleton.png)
+![Alt text](ReadMeImages/mainskeleton.jpg)
 
 ### Genre: Roguelike • Top-Down Action • Dark Fantasy  
-### Designer: William Sherry  
+### Creator: William Sherry  
 
 ---
 
