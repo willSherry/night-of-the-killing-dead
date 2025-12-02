@@ -203,3 +203,4 @@ MonoBehaviour:
   rb: {fileID: 4027389100261956756}
   movementSpeed: 2.5
   target: {fileID: 0}
+  health: 100

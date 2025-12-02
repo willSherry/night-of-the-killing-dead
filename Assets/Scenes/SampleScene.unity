@@ -142316,6 +142316,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::LevelUpUI
   levelUpPanel: {fileID: 1860362341}
+  upgradeManager: {fileID: 0}
   upgradeButton1: {fileID: 681908464}
   upgradeButton2: {fileID: 919408017}
   upgradeButton3: {fileID: 1399143212}
